@@ -13,4 +13,5 @@ urlpatterns = [
     path('pngtowebp/', views.pngtowebp, name='pngtowebp'),
     path('imagecompress/', views.imagecompress, name='imagecompress'),
     path('pdftojpg/', views.pdftojpg, name='pdftojpg'),
+    
 ]
