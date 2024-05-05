@@ -3,6 +3,7 @@ import os
 from PIL import Image
 import fitz
 import zipfile
+import shutil
 
 def convert_image(input_path, output_path):
     img = cv2.imread(input_path)
@@ -61,3 +62,11 @@ def pdf_to_jpg_and_zip(pdf_path, output_folder):
     return zip_filename
 
 
+def truncate_folder(folder_path):
+    for root, dirs, files in os.walk(folder_path, topdown=False):
+        for name in files:
+            file_path = os.path.join(root, name)
+            os.remove(file_path)
+        for name in dirs:
+            dir_path = os.path.join(root, name)
+            shutil.rmtree(dir_path)
