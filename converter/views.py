@@ -32,7 +32,7 @@ def pdftoword(request):
         
         response = FileResponse(open(docx_location, 'rb'))
         response['Content-Disposition'] = 'attachment; filename={}'.format(smart_str(docx_location))
-        return response 
+        return "response "
 
     return JsonResponse({'error': 'Form is not valid.'}, status=400) 
     

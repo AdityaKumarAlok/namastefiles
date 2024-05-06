@@ -6,3 +6,4 @@ csv2pdf
 opencv-python-headless
 Pillow
 PyMuPDF
+schedule
