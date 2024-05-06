@@ -1,0 +1,8 @@
+django
+djangorestframework
+pdf2docx
+docx2pdf
+csv2pdf
+opencv-python-headless
+Pillow
+PyMuPDF
