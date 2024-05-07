@@ -10,10 +10,15 @@ from django.http import JsonResponse
 from docx2pdf import convert
 from csv2pdf import convert as csvConverter
 import os
-from .controlers.FileControler import convert_image,resize_image_to_filesize,pdf_to_jpg_and_zip
+from .controlers.FileControler import convert_image,resize_image_to_filesize,pdf_to_jpg_and_zip,get_folder_size,truncate_folder
 
 @api_view(['POST'])
 def pdftoword(request):
+    size = get_folder_size("uploads")
+    if size >= 100:
+        truncate_folder("uploads")
+    else:
+        pass
     form = UploadedFileForm(request.POST, request.FILES)
     if form.is_valid():
         uploaded_file = request.FILES['file']
@@ -32,7 +37,7 @@ def pdftoword(request):
         
         response = FileResponse(open(docx_location, 'rb'))
         response['Content-Disposition'] = 'attachment; filename={}'.format(smart_str(docx_location))
-        return "response "
+        return response
 
     return JsonResponse({'error': 'Form is not valid.'}, status=400) 
     
