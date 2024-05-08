@@ -3,6 +3,7 @@ import os
 from PIL import Image
 import fitz
 import zipfile
+
 def convert_image(input_path, output_path):
     img = cv2.imread(input_path)
     if img is None:
